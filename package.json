@@ -1,0 +1,19 @@
+{
+  "name": "jison_practise",
+  "version": "1.0.0",
+  "main": "generator.js",
+  "scripts": {
+    "test": "mocha assignment/test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "jison": "file:jison",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "jison": "^0.4.17"
+  },
+  "description": ""
+}
