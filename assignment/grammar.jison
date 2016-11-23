@@ -31,8 +31,7 @@
 expressions
     : e EOF
         {
-            console.log($$.representWithSymbols());
-            console.log($$.representWithWords());
+            return $$;
         }
     ;
 
