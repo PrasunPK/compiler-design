@@ -1,7 +1,9 @@
-
+`
 /* description: Parses and executes mathematical expressions. */
 %{
-    var treeParser = require("./src/parser.js");
+    var path = require('path');
+    var NumberNode = require(path.resolve('.//src/numberNode.js'))
+    var OperatorNode = require(path.resolve('./src/operatorNode.js'))
 %}
 
 /* lexical grammar */
@@ -28,17 +30,18 @@
 
 expressions
     : e EOF
-        {   
-            console.log(treeParser.parse($1));
+        {
+            console.log($$.representWithSymbols());
+            console.log($$.representWithWords());
         }
     ;
 
 e
     : e '+' e
-        {$$ = {parent : $2, leftChild : $1, rightChild : $3};}
+        {$$ = new OperatorNode($2,$1,$3); }
     | e '-' e
-        {$$ = {parent : $2, leftChild : $1, rightChild : $3};}
+        {$$ = new OperatorNode($2,$1,$3); }
     | NUMBER
-        {$$ = Number(yytext);}
+        {$$ = new NumberNode(yytext);}
     ;
 
