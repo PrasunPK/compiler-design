@@ -20,4 +20,10 @@ describe('grammar', function(){
         var result = parser.parse(expression);
         assert.equal(expected,result.representWithWords());
     });
+
+    it('should process as assignment expression and evaluate it', function () {
+        var assignmentExpression = "x=2";
+        var actual = parser.parse(assignmentExpression);
+        assert.equal(actual.evaluate(), 2);
+    })
 });

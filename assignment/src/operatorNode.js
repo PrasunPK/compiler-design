@@ -1,15 +1,19 @@
-var converter = require('number-to-words');
+var operations = require('./operations.js');
 
 var OperatorNode = function (value, leftChild, rightChild) {
     this.symbol = value;
     this.leftChild = leftChild;
     this.rightChild = rightChild;
-    this.wordRepresentation = getWordRepresentation(value);
+    this.value = getWordRepresentation(value);
+    this.operation = getOperation(value);
 };
 
 var getWordRepresentation = function (operator) {
     var symbols = {'+': 'plus', '-': 'minus', '*': 'times', '/': 'divide'};
     return symbols[operator];
+};
+var getOperation = function (operator) {
+    return operations[operator];
 };
 
 OperatorNode.prototype = {
@@ -17,7 +21,7 @@ OperatorNode.prototype = {
     representWithWords: function () {
         return ["(",
             this.leftChild.representWithWords(),
-            this.wordRepresentation,
+            this.value,
             this.rightChild.representWithWords(),
             ")"].join(" ");
     },
@@ -27,6 +31,9 @@ OperatorNode.prototype = {
             this.symbol,
             this.rightChild.representWithSymbols(),
             ")"].join(" ");
+    },
+    evaluate: function () {
+        return this.operation(this.leftChild, this.rightChild);
     }
 };
 

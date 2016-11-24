@@ -32,3 +32,10 @@ describe('operatorNode # representWithWords', function () {
         assert.equal('( five times four )', expression.representWithWords());
     });
 });
+
+describe('operatorNode # evaluate', function () {
+    it('should operate based on the given expression and return result', function () {
+        var expression = new OperatorNode('*', new NumberNode('5'), new NumberNode('5'));
+        assert.equal(25, expression.evaluate());
+    });
+});
