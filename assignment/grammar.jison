@@ -15,6 +15,7 @@
 "*"                   return '*'
 "="                   return '='
 "/"                   return '/'
+"^"                   return '^'
 <<EOF>>               return 'EOF'
 .                     return 'INVALID'
 
@@ -22,6 +23,7 @@
 
 %left '+' '-'
 %left '*' '/'
+%right '^'
 %right '%'
 
 %start expressions
@@ -55,6 +57,8 @@ e
     | e '*' e
         {$$ = new OperatorNode($2,$1,$3); }
     | e '/' e
+        {$$ = new OperatorNode($2,$1,$3); }
+    | e '^' e
         {$$ = new OperatorNode($2,$1,$3); }
     | NUMBER
         {$$ = new NumberNode(yytext);}

@@ -38,4 +38,9 @@ describe('operatorNode # evaluate', function () {
         var expression = new OperatorNode('*', new NumberNode('5'), new NumberNode('5'));
         assert.equal(25, expression.evaluate());
     });
+
+    it('should operate and evaluate 2^3 and give result as 8', function () {
+        var expression = new OperatorNode('^', new NumberNode('2'), new NumberNode('3'));
+        assert.equal(8, expression.evaluate());
+    });
 });

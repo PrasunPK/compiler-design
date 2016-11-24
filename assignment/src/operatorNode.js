@@ -9,7 +9,7 @@ var OperatorNode = function (value, leftChild, rightChild) {
 };
 
 var getWordRepresentation = function (operator) {
-    var symbols = {'+': 'plus', '-': 'minus', '*': 'times', '/': 'divide'};
+    var symbols = {'+': 'plus', '-': 'minus', '*': 'times', '/': 'divide', '^':'power'};
     return symbols[operator];
 };
 var getOperation = function (operator) {
